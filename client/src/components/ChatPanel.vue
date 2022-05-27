@@ -1,8 +1,15 @@
 <template>
   <div class="chat-panel" v-if="messages" ref="chatArea">
     <div ref="scrollHeight">
-      <div class="row no-gutters" v-for="message in messages">
-        <div class="chat-bubble">
+      <div
+        v-for="message in messages"
+        class="row no-gutters"
+        :class="{ 'justify-content-end': message.userId === userId }"
+      >
+        <div
+          class="chat-bubble"
+          :class="message.userId === userId ? 'right' : 'left'"
+        >
           {{ message.message }}
         </div>
       </div>

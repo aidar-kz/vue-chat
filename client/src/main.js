@@ -5,6 +5,8 @@ import App from "./App.vue";
 
 const app = createApp(App);
 
-app.config.globalProperties.$socket = io("http://localhost:3000");
+// const url = "https://empty-ears-greet-37-99-41-82.loca.lt";
+const url = "http://localhost:3000";
+app.config.globalProperties.$socket = io(url);
 
 app.mount("#app");
