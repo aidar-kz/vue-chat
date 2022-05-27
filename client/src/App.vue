@@ -1,9 +1,36 @@
 <template>
-  <main class="container p-5"></main>
+  <main class="container p-5">
+    <LoginForm
+      v-if="!isReady"
+      v-model:username="username"
+      @submit="joinToChat"
+      :errorLoginMsg="errorLoginMsg"
+    />
+
+    <div v-else class="row h-100 no-gutters">
+      <div class="col-4 border-right pe-0">
+        <UserList :users="users" />
+      </div>
+
+      <div class="col-8 ps-0">
+        <ChatPanel
+          :messages="messages"
+          :isTyping="isTyping"
+          :userId="userId"
+          v-model:message="message"
+        />
+
+        <MessageInput :username="username" />
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
+import LoginForm from "./components/LoginForm.vue";
+
 export default {
+  components: { LoginForm },
   data() {
     return {
       users: [],
@@ -52,4 +79,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+@import "bootstrap/dist/css/bootstrap.css";
+</style>
