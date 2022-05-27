@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 import dateFormat from "dateformat";
 
 import "./mongo.js";
-import Message from "./models/Message";
+import Message from "./models/Message.js";
 
 const app = express();
 const port = 3000;
@@ -68,6 +68,7 @@ io.on("connection", (socket) => {
   socket.on("isTyping", () => {
     socket.broadcast.emit("isTyping", socket.username);
   });
+
   socket.on("stopTyping", (data) => {
     socket.broadcast.emit("stopTyping", data);
   });
