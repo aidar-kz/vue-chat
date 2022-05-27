@@ -12,7 +12,7 @@
         <UserList :users="users" />
       </div>
 
-      <div class="col-8 ps-0">
+      <!-- <div class="col-8 ps-0">
         <ChatPanel
           :messages="messages"
           :isTyping="isTyping"
@@ -21,16 +21,17 @@
         />
 
         <MessageInput :username="username" />
-      </div>
+      </div> -->
     </div>
   </main>
 </template>
 
 <script>
-import LoginForm from "./components/LoginForm.vue";
+import LoginForm from "@/components/LoginForm.vue";
+import UserList from "@/components/UserList.vue";
 
 export default {
-  components: { LoginForm },
+  components: { LoginForm, UserList },
   data() {
     return {
       users: [],
